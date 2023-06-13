@@ -86,7 +86,6 @@
             menuOculto.classList.toggle("active");
         }
 
-
         const carouselContent = document.querySelector('.carousel-content-destinos');
         const prevButton = document.querySelector('.prev-button');
         const nextButton = document.querySelector('.next-button');
@@ -95,6 +94,7 @@
         let currentIndex = 0;
         let isAnimating = false;
         let animationId = null;
+        let autoplayInterval = null;
 
         function showSlide(index) {
             const itemWidth = carouselItems[0].offsetWidth;
@@ -114,6 +114,10 @@
             setTimeout(() => {
                 isAnimating = false;
             }, 100);
+
+            // Detener el autoplay y reiniciar después de 3 segundos
+            clearInterval(autoplayInterval);
+            setTimeout(startAutoplay, 3000);
         }
 
         function nextSlide() {
@@ -124,6 +128,18 @@
             setTimeout(() => {
                 isAnimating = false;
             }, 100);
+
+            // Detener el autoplay y reiniciar después de 3 segundos
+            clearInterval(autoplayInterval);
+            setTimeout(startAutoplay, 3000);
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 7000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
         }
 
         prevButton.addEventListener('click', prevSlide);
@@ -133,7 +149,11 @@
             nextSlide();
         }
 
-        setInterval(autoSlide, 7000);
+        startAutoplay();
+
+        // Agregar eventos de hover para detener el autoplay
+        carouselContent.addEventListener('mouseenter', stopAutoplay);
+        carouselContent.addEventListener('mouseleave', startAutoplay);
 
 
 
