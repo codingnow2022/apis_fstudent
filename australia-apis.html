@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apis Student | Blog</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="64x64">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Internas_apis.css">
+</head>
+
+<body class="ovfh">
+    <header>
+        <div class="container-fluid">
+            <nav>
+                <a href="index.html" class="logo"><img src="img/Logo.png" alt="logo"></a>
+                <div class="right">
+                    <a href="destinos.html" class="back-btn"><img src="img/Back Button.png" alt=""> Volver</a>
+                    <a href="#" class="menu-btn" onclick="activarMenu()">Menu+</a>
+                </div>
+
+            </nav>
+            <div id="menu-oculto" class="">
+                <ul>
+                    <li><a href="quienes-somos.html">Quienes Somos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testimonios.html">Testimonios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <section id="destinos" class="interna-destinos">
+        <div class="container-fluid">
+            <div class="carousel-destinos">
+                <div class="carousel-content-destinos">
+                    <div class="carousel-item-d parallax">
+                        <a href="sydeny-apis.html">
+                            <img src="img/Bg-sydney.jpg" alt="">
+                            <h2>Sydney</h2>
+                        </a>
+                    </div>
+                    <div class="carousel-item-d parallax">
+                        <a href="brisbane-apis.html">
+                            <img src="img/bg-brisbane.jpg" alt="">
+                            <h2>Brisbane</h2>
+                        </a>
+                    </div>
+
+                    <div class="carousel-item-d parallax">
+                        <a href="melbourne-apis.html">
+                            <img src="img/Bg-melbourne.jpg" alt="">
+                            <h2>Melbourne</h2>
+                        </a>
+                    </div>
+                    <div class="carousel-item-d parallax">
+                        <a href="gold-coast-apis.html">
+                            <img src="img/Bg-gold-coast.jpg" alt="">
+                            <h2>Gold Coast</h2>
+                        </a>
+                    </div>
+                    <div class="carousel-item-d parallax">
+                        <a href="perth-apis.html">
+                            <img src="img/Bg-perth.jpg" alt="">
+                            <h2>Perth</h2>
+                        </a>
+                    </div>
+                    <div class="carousel-item-d parallax">
+                        <a href="adelaide-apis.html">
+                            <img src="img/Bg-adelaide.jpg" alt="">
+                            <h2>Adelaide</h2>
+                        </a>
+                    </div>
+
+                    <div class="carousel-item-d parallax">
+                        <a href="byron-bay-apis.html">
+                            <img src="img/Bg-byron-bay.jpg" alt="">
+                            <h2>Byron Bay</h2>
+                        </a>
+                    </div>
+
+                    <div class="carousel-item-d parallax">
+                        <a href="darwin-apis.html">
+                            <img src="img/Bg-darwin.jpg" alt="">
+                            <h2>Darwin</h2>
+                        </a>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-button"><img src="img/Left arrow.png" alt=""></button>
+                    <button class="next-button"><img src="img/Right arrow.png" alt=""></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        function activarMenu() {
+            let menuOculto = document.getElementById("menu-oculto");
+
+            menuOculto.classList.toggle("active");
+        }
+
+
+        const carouselContent = document.querySelector('.carousel-content-destinos');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        const carouselItems = Array.from(document.querySelectorAll('.carousel-item-d'));
+
+        let currentIndex = 0;
+        let isAnimating = false;
+        let animationId = null;
+        let autoplayInterval = null;
+
+        function showSlide(index) {
+            const itemWidth = carouselItems[0].offsetWidth;
+            carouselContent.style.transform = `translateX(-${index * itemWidth}px)`;
+
+            // Agregar la clase "active" al elemento actualmente visible
+            carouselItems.forEach((item, i) => {
+                item.classList.toggle("active", i === index);
+            });
+        }
+
+        function prevSlide() {
+            if (isAnimating) return;
+            isAnimating = true;
+            currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+            showSlide(currentIndex);
+            setTimeout(() => {
+                isAnimating = false;
+            }, 100);
+
+            // Detener el autoplay y reiniciar después de 3 segundos
+            clearInterval(autoplayInterval);
+            setTimeout(startAutoplay, 3000);
+        }
+
+        function nextSlide() {
+            if (isAnimating) return;
+            isAnimating = true;
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            showSlide(currentIndex);
+            setTimeout(() => {
+                isAnimating = false;
+            }, 100);
+
+            // Detener el autoplay y reiniciar después de 3 segundos
+            clearInterval(autoplayInterval);
+            setTimeout(startAutoplay, 3000);
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 7000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+
+        function autoSlide() {
+            nextSlide();
+        }
+
+        startAutoplay();
+
+        // Agregar eventos de hover para detener el autoplay
+        carouselContent.addEventListener('mouseenter', stopAutoplay);
+        carouselContent.addEventListener('mouseleave', startAutoplay);
+
+
+
+
+
+
+
+
+
+
+
+
+        // const carouselContent = document.querySelector('.carousel-content-destinos');
+        // const prevButton = document.querySelector('.prev-button');
+        // const nextButton = document.querySelector('.next-button');
+        // const carouselItems = Array.from(document.querySelectorAll('.carousel-item-d'));
+
+        // let currentIndex = 0;
+        // let isAnimating = false;
+        // let animationId = null;
+
+        // function showSlide(index) {
+        //     const itemWidth = carouselItems[0].offsetWidth;
+        //     carouselContent.style.transform = `translateX(-${index * itemWidth}px)`;
+
+        //     // Agregar la clase "active" al elemento actualmente visible
+        //     carouselItems.forEach((item, i) => {
+        //         item.classList.toggle("active", i === index);
+        //     });
+        // }
+
+        // function prevSlide() {
+        //     if (isAnimating) return;
+        //     isAnimating = true;
+        //     currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        //     showSlide(currentIndex);
+        //     setTimeout(() => {
+        //         isAnimating = false;
+        //     }, 100);
+        // }
+
+        // function nextSlide() {
+        //     if (isAnimating) return;
+        //     isAnimating = true;
+        //     currentIndex = (currentIndex + 1) % carouselItems.length;
+        //     showSlide(currentIndex);
+        //     setTimeout(() => {
+        //         isAnimating = false;
+        //     }, 100);
+        // }
+
+        // prevButton.addEventListener('click', prevSlide);
+        // nextButton.addEventListener('click', nextSlide);
+
+        // function autoSlide() {
+        //     nextSlide();
+        // }
+
+        // setInterval(autoSlide, 7000);
+
+
+
+
+
+        // const carouselContent = document.querySelector('.carousel-content-destinos');
+        // const prevButton = document.querySelector('.prev-button');
+        // const nextButton = document.querySelector('.next-button');
+        // const carouselItems = Array.from(document.querySelectorAll('.carousel-item-d'));
+
+        // let currentIndex = 0;
+        // let isAnimating = false;
+        // let animationId = null;
+
+        // function showSlide(index) {
+        //     const itemWidth = carouselItems[0].offsetWidth;
+        //     carouselContent.style.transform = `translateX(-${index * itemWidth}px)`;
+        // }
+
+        // function prevSlide() {
+        //     if (isAnimating) return;
+        //     isAnimating = true;
+        //     currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        //     showSlide(currentIndex);
+        //     setTimeout(() => {
+        //         isAnimating = false;
+        //     }, 1000);
+        // }
+
+        // function nextSlide() {
+        //     if (isAnimating) return;
+        //     isAnimating = true;
+        //     currentIndex = (currentIndex + 1) % carouselItems.length;
+        //     showSlide(currentIndex);
+        //     setTimeout(() => {
+        //         isAnimating = false;
+        //     }, 1000);
+        // }
+
+        // prevButton.addEventListener('click', prevSlide);
+        // nextButton.addEventListener('click', nextSlide);
+
+        // function autoSlide() {
+        //     nextSlide();
+        // }
+
+        // setInterval(autoSlide, 4000);
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

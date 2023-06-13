@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apis Student | Blog</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="64x64">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Internas_apis.css">
+</head>
+
+<body class="ovfh">
+    <header>
+        <div class="container-fluid">
+            <nav>
+                <a href="index.html" class="logo"><img src="img/Logo.png" alt="logo"></a>
+                <div class="right">
+                    <a href="index.html" class="back-btn"><img src="img/Back Button.png" alt=""> Volver</a>
+                    <a href="#" class="menu-btn" onclick="activarMenu()">Menu+</a>
+                </div>
+
+            </nav>
+            <div id="menu-oculto" class="">
+                <ul>
+                    <li><a href="quienes-somos.html">Quienes Somos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testimonios.html">Testimonios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <section id="testimonios">
+        <div class="container-fluid">
+            <div class="carousel">
+                <div class="carousel-content">
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa
+                        para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                    <p class="carousel-text">
+                        <img src="img/comillas-w-t.png" alt=""><br>
+                        Me llena de mucha felicidad que me aprobaron la visa para estudiar
+                        inglés en Australia, muchas gracias APIS
+                        <br>
+                        <span>
+                            Viviana Ruiz
+                        </span>
+                    </p>
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-button"><img src="img/Left arrow.png" alt=""></button>
+                    <button class="next-button"><img src="img/Right arrow.png" alt=""></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        function activarMenu() {
+            let menuOculto = document.getElementById("menu-oculto");
+
+            menuOculto.classList.toggle("active");
+        }
+
+        const carouselContent = document.querySelector('.carousel-content');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        const carouselTexts = Array.from(document.querySelectorAll('.carousel-text'));
+
+        let currentIndex = 0;
+        let isDragging = false;
+        let startPosX = 0;
+        let currentTranslateX = 0;
+        let animationId = null;
+
+        function showSlide(index) {
+            carouselContent.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + carouselTexts.length) % carouselTexts.length;
+            showSlide(currentIndex);
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % carouselTexts.length;
+            showSlide(currentIndex);
+        }
+
+        function startDrag(event) {
+            isDragging = true;
+            startPosX = getPositionX(event);
+            currentTranslateX = getCurrentTranslateX();
+            cancelAnimation();
+        }
+
+        function drag(event) {
+            if (!isDragging) return;
+            const currentPosX = getPositionX(event);
+            const translateX = currentTranslateX + currentPosX - startPosX;
+            setTranslateX(translateX);
+        }
+
+        function endDrag() {
+            isDragging = false;
+            const dragThreshold = carouselContent.offsetWidth * 0.2;
+            const translateX = getCurrentTranslateX();
+            if (translateX > dragThreshold) {
+                prevSlide();
+            } else if (translateX < -dragThreshold) {
+                nextSlide();
+            } else {
+                showSlide(currentIndex);
+            }
+        }
+
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        function getCurrentTranslateX() {
+            const transform = window.getComputedStyle(carouselContent).getPropertyValue('transform');
+            const matrix = new DOMMatrixReadOnly(transform);
+            return matrix.m41;
+        }
+
+        function setTranslateX(translateX) {
+            carouselContent.style.transform = `translateX(${translateX}px)`;
+        }
+
+        function animateCarousel() {
+            nextSlide();
+        }
+
+        function cancelAnimation() {
+            cancelAnimationFrame(animationId);
+        }
+
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+        carouselContent.addEventListener('mousedown', startDrag);
+        carouselContent.addEventListener('mousemove', drag);
+        carouselContent.addEventListener('mouseup', endDrag);
+        carouselContent.addEventListener('touchstart', startDrag);
+        carouselContent.addEventListener('touchmove', drag);
+        carouselContent.addEventListener('touchend', endDrag);
+
+        // Agrega el estilo de transición suave al elemento .carousel-content
+        carouselContent.style.transition = 'transform 1s ease';
+
+        showSlide(currentIndex);
+        setInterval(animateCarousel, 5000);
+
+
+    </script>
+</body>
+
+</html>

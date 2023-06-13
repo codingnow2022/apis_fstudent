@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    cursor: url("../img/Pointer5.png"), auto !important;
+}
+
+#cont-home {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/Bg-1.jpg")center no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: top;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+header {
+    width: 100%;
+    position: relative;
+    z-index: 999;
+}
+
+
+header .container-fluid {
+    max-width: 1600px;
+    width: 80%;
+    padding-top: 40px;
+
+}
+
+header .container-fluid nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 9999;
+}
+
+nav a.logo {
+    position: relative;
+    transition: .5s;
+    animation-name: topMenu;
+    animation-duration: 2.0s;
+    cursor: url("../img/Pointer5.png"), auto;
+}
+
+nav a.logo img {
+    width: 160px;
+}
+
+nav a.logo:hover {
+    transform: translateX(30px);
+}
+
+nav .menu-btn {
+    color: #466574;
+    position: relative;
+    z-index: 1;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: url("../img/Pointer5.png"), auto;
+    padding: 30px;
+    animation-name: topMenu;
+    animation-duration: 2.5s;
+}
+
+nav .menu-btn::before {
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    background: #fff;
+    left: 2px;
+    top: -15px;
+    z-index: -2;
+    border-radius: 50%;
+    animation-name: ondass;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    box-shadow: 0 0 10px #fff;
+    animation-play-state: running;
+}
+
+nav .menu-btn::after {
+    content: "";
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    background: #fff;
+    left: 16px;
+    top: 0px;
+    z-index: -1;
+    border-radius: 50%;
+    animation-name: ondas;
+    animation-duration: .9s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    box-shadow: 0px 0px 14px #78787851, 7px 0px 2px #ffffff00;
+}
+
+@keyframes ondas {
+    0% {
+        transform: scale(1.4);
+
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+@keyframes ondass {
+    0% {
+        transform: scale(1);
+
+    }
+
+    100% {
+        transform: scale(1.1);
+
+    }
+}
+
+
+#menu-oculto {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/Bg-menu.png");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    z-index: 999;
+    display: none;
+    padding-top: 130px;
+    transition: .8s;
+    
+}
+
+#menu-oculto.active {
+    right: 0%;
+    display: block;
+    animation-name: desvanecer;
+    animation-duration: .4s;
+    animation-timing-function: ease-out;
+}
+@keyframes desvanecer {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+#menu-oculto ul{
+    padding: 0;
+}
+#menu-oculto ul li {
+    list-style: none;
+    text-align: center;
+    margin: 30px 0;
+}
+
+#menu-oculto ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    cursor: url("../img/Pointer5.png"), auto;
+    transition: .4s;
+}
+
+
+
+#menu-oculto ul li a:before {
+    width: 0%;
+    height: 2px;
+    background: transparent;
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: .4s;
+    box-shadow: 0 0 10px #fff;
+}
+
+#menu-oculto ul li a:hover:before {
+    width: 80%;
+    background: #fff;
+}
+
+.container-cards {
+    max-width: 1920px;
+    width: 100%;
+    padding-left: 34px;
+    padding-top: 40px;
+    margin: 60px auto 0;
+    display: flex;
+
+    position: relative;
+    z-index: 1;
+    cursor: url("../img/Pointer5.png"), auto;
+    overflow: hidden;
+    height: 550px;
+    scroll-snap-type: x mandatory;
+
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+
+.container-cards::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.container-cards .cardApis {
+    position: relative;
+    transition: .4s;
+}
+
+.container-cards .cardApis::before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    content: "";
+    border: 2px solid transparent;
+    z-index: 99;
+    transition: .4s;
+    pointer-events: none;
+}
+
+.cardApi {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 180px;
+    background-color: lightgray;
+    margin-right: 10px;
+    padding: 10px;
+    user-select: none;
+    cursor: grab;
+}
+
+.container-cards .cardApis a {
+    cursor: url("../img/Pointer5.png"), auto;
+
+}
+
+
+.container-cards .cardApis:nth-child(3) p,
+.container-cards .cardApis:nth-child(4) p,
+.container-cards .cardApis:nth-child(7) p {
+    color: #466574;
+}
+
+
+.container-cards .cardApis img {
+    position: relative;
+    min-width: 268px;
+    height: 389px;
+}
+
+.container-cards .cardApis p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0 auto;
+    top: 8%;
+    z-index: 99;
+    color: #fff;
+    padding: 20px 0;
+    transition: .2s;
+}
+
+footer {
+    max-width: 1600px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+}
+
+footer .left-footer {
+    width: 33.3%;
+    animation-name: topMenu;
+    position: relative;
+    animation-duration: 3s;
+    display: flex;
+}
+
+footer .left-footer p a:nth-child(1) {
+    margin-left: 10px;
+}
+
+footer .left-footer p a {
+    margin-left: 1px;
+    cursor: url("../img/Pointer5.png"), auto !important;
+    padding: 6px;
+}
+
+footer .left-footer p a img {
+    transition: .2s;
+    border: 1px solid transparent;
+}
+
+footer .left-footer p a:hover img {
+    border: 1px solid #fff;
+    transform: translateY(-10px) scale(1.1);
+}
+
+footer .center-footer {
+    display: flex;
+    width: 33.3%;
+    justify-content: center;
+    position: relative;
+    animation-name: topMenu;
+    animation-duration: 3.5s;
+}
+
+footer .center-footer .redes {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 0 20px;
+    cursor: url("../img/Pointer5.png"), auto !important;
+    transition: .2s;
+}
+
+footer .center-footer .redes img {
+    transition: .2s;
+}
+
+footer .center-footer .redes:hover img,
+footer .right-footer a:hover {
+
+    transform: translateY(-10px)scale(1.1);
+}
+
+
+footer .right-footer {
+    display: flex;
+    width: 33.3%;
+    position: relative;
+    justify-content: center;
+    animation-name: topMenu;
+    animation-duration: 4s;
+}
+
+footer .right-footer a {
+    cursor: url("../img/Pointer5.png"), auto !important;
+    transition: .2s;
+    padding: 0 30px;
+}
+
+.whatsapp {
+    position: absolute;
+    right: 4%;
+    bottom: -26px;
+    cursor: url("../img/Pointer5.png"), auto !important;
+    animation-name: whatsapp;
+    animation-duration: 4s;
+    transition: .2s;
+    padding: 40px;
+}
+
+.whatsapp:hover {
+    transform: translateY(-15px) scale(1.1);
+}
+
+
+/* CURSOS */
+
+#cont-cursos {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    background: #000;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 999;
+}
+
+@keyframes cursos {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#cont-cursos .camera_caption .container {
+    max-width: 100% !important;
+}
+
+#cont-cursos .cont-carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    animation-name: cursos;
+    animation-duration: 3s;
+}
+
+
+h2.titulo-slider {
+    font-size: 80px;
+    text-transform: none;
+    line-height: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container-cards .cardApis:nth-child(3) p,
+.container-cards .cardApis:nth-child(4) p,
+.container-cards .cardApis:nth-child(7) p {
+    color: #466574;
+}
+
+.container-cards .cardApis:nth-child(1) {
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(2) {
+    position: relative;
+    z-index: -1;
+    left: -10px;
+    top: 30px;
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(3) {
+    position: relative;
+    z-index: 1;
+    left: -30px;
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(4) {
+    position: relative;
+    z-index: 2;
+    left: -50px;
+    top: 30px;
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(5) {
+    position: relative;
+    z-index: 2;
+    left: -70px;
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(6) {
+    position: relative;
+    z-index: 3;
+    left: -110px;
+    top: 30px;
+
+    animation-duration: 2s;
+}
+
+.container-cards .cardApis:nth-child(7) {
+    position: relative;
+    z-index: 1;
+    left: -140px;
+
+    animation-duration: 2s;
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1470px) {
+    footer {
+        width: 96%;
+    }
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1023px) {
+    footer {
+        width: 98%;
+        padding-bottom: 50px;
+    }
+
+    footer .left-footer {
+        display: block;
+    }
+
+    footer .left-footer ul {
+        padding: 0;
+    }
+
+    .whatsapp {
+        position: absolute;
+        right: 0;
+        bottom: 42px;
+        cursor: url(../img/Pointer5.png), auto !important;
+        animation-name: whatsapp;
+        animation-duration: 4s;
+        transition: .2s;
+        padding: 40px;
+    }
+
+    .whatsapp img {
+        width: 46px;
+    }
+
+    nav .menu-btn::before {
+        content: "";
+        position: absolute;
+        width: 105px;
+        height: 105px;
+        background: #fff;
+        left: 7px;
+        top: -10px;
+    }
+
+    nav .menu-btn::after {
+        content: "";
+        position: absolute;
+        width: 76px;
+        height: 76px;
+        background: #fff;
+        left: 22px;
+        top: 4px;
+
+    }
+}
