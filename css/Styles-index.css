@@ -54,7 +54,7 @@ nav a.logo img {
 }
 
 nav a.logo:hover {
-    transform: translateX(30px);
+    transform: scale(1.1);
 }
 
 nav .menu-btn {
@@ -209,13 +209,12 @@ nav .menu-btn::after {
 .container-cards {
     max-width: 1920px;
     width: 100%;
-    padding-left: 34px;
     padding-top: 40px;
-    margin: 60px auto 0;
+    margin: 20px auto 0;
     display: flex;
 
     position: relative;
-    z-index: 1;
+    z-index: 999;
     cursor: url("../img/Pointer5.png"), auto;
     overflow: hidden;
     height: 550px;
@@ -232,9 +231,17 @@ nav .menu-btn::after {
 
 .container-cards .cardApis {
     position: relative;
+    
     transition: .4s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra por defecto */
 }
-
+.container-cards .cardApis:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0px 6px rgb(255 255 255); /* Sombra al hacer hover */
+}
+.container-cards .owl-stage-outer{
+    padding-top: 40px;
+}
 .container-cards .cardApis::before {
     width: 100%;
     height: 100%;
@@ -248,16 +255,7 @@ nav .menu-btn::after {
     pointer-events: none;
 }
 
-.cardApi {
-    flex: 0 0 auto;
-    width: 200px;
-    height: 180px;
-    background-color: lightgray;
-    margin-right: 10px;
-    padding: 10px;
-    user-select: none;
-    cursor: grab;
-}
+
 
 .container-cards .cardApis a {
     cursor: url("../img/Pointer5.png"), auto;
@@ -265,12 +263,50 @@ nav .menu-btn::after {
 }
 
 
-.container-cards .cardApis:nth-child(3) p,
-.container-cards .cardApis:nth-child(4) p,
-.container-cards .cardApis:nth-child(7) p {
-    color: #466574;
+.container-cards .cardApis.text-b p{
+    color: #466574 ;
 }
 
+
+/* owl-carousel */
+
+.owl-carousel .owl-stage-outer{
+    height: 500px;
+}
+.container-cards .owl-stage-outer{
+    padding-top: 40px;
+}
+
+.container-cards .cardApis.nosotros{
+    position: relative;
+    top: 10px;
+    
+}
+.container-cards .cardApis.servicios{
+    position: relative;    
+    top: 30px;
+}
+
+.container-cards .cardApis.cursos{
+    position: relative;    
+}
+
+
+.container-cards .cardApis.destinos{
+    position: relative;    
+    top: 30px;
+}
+
+.container-cards .cardApis.testimonios{
+    position: relative;    
+}
+.container-cards .cardApis.blog{
+    position: relative;    
+    top: 30px;
+}
+.container-cards .cardApis.contacto{
+    position: relative;
+}
 
 .container-cards .cardApis img {
     position: relative;
@@ -305,28 +341,28 @@ footer {
 
 footer .left-footer {
     width: 33.3%;
-    animation-name: topMenu;
     position: relative;
     animation-duration: 3s;
     display: flex;
 }
 
-footer .left-footer p a:nth-child(1) {
+footer .left-footer ul a:nth-child(1) {
     margin-left: 10px;
+    
 }
 
-footer .left-footer p a {
+footer .left-footer ul a {
     margin-left: 1px;
     cursor: url("../img/Pointer5.png"), auto !important;
-    padding: 6px;
+    padding: 2px;
 }
 
-footer .left-footer p a img {
+footer .left-footer ul a img {
     transition: .2s;
     border: 1px solid transparent;
 }
 
-footer .left-footer p a:hover img {
+footer .left-footer ul a:hover img {
     border: 1px solid #fff;
     transform: translateY(-10px) scale(1.1);
 }
@@ -438,68 +474,6 @@ h2.titulo-slider {
 }
 
 
-.container-cards .cardApis:nth-child(3) p,
-.container-cards .cardApis:nth-child(4) p,
-.container-cards .cardApis:nth-child(7) p {
-    color: #466574;
-}
-
-.container-cards .cardApis:nth-child(1) {
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(2) {
-    position: relative;
-    z-index: -1;
-    left: -10px;
-    top: 30px;
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(3) {
-    position: relative;
-    z-index: 1;
-    left: -30px;
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(4) {
-    position: relative;
-    z-index: 2;
-    left: -50px;
-    top: 30px;
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(5) {
-    position: relative;
-    z-index: 2;
-    left: -70px;
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(6) {
-    position: relative;
-    z-index: 3;
-    left: -110px;
-    top: 30px;
-
-    animation-duration: 2s;
-}
-
-.container-cards .cardApis:nth-child(7) {
-    position: relative;
-    z-index: 1;
-    left: -140px;
-
-    animation-duration: 2s;
-
-}
 
 @media screen and (min-width: 1024px) and (max-width: 1470px) {
     footer {

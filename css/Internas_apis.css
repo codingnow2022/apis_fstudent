@@ -39,7 +39,7 @@ header .container-fluid nav {
 
 nav a.logo {
   position: relative;
-  animation-name: topMenu;
+
   animation-duration: 1s;
   cursor: url("../img/Pointer5.png"), auto;
 }
@@ -58,7 +58,7 @@ nav .back-btn {
   margin-right: 20px;
   font-size: 16px;
   position: relative;
-  animation-name: topMenu;
+
   animation-duration: 1s;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ nav .menu-btn {
   text-decoration: none;
   cursor: url("../img/Pointer5.png"), auto;
   padding: 30px;
-  animation-name: topMenu;
+
   animation-duration: 2.5s;
 }
 
@@ -231,7 +231,7 @@ nav .menu-btn::after {
 nav a.logo {
   position: relative;
   transition: .5s;
-  animation-name: topMenu;
+
   animation-duration: 1s !important;
   cursor: url("../img/Pointer5.png"), auto;
 }
@@ -249,7 +249,7 @@ nav .menu-btn {
   text-decoration: none;
   cursor: url("../img/Pointer5.png"), auto;
   padding: 30px;
-  animation-name: topMenu;
+
   animation-duration: 1s !important;
 }
 
@@ -835,13 +835,19 @@ footer .derechos p {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
+  cursor: url("../img/Pointer5.png"), auto;
   transition: transform 1s ease;
+}
+
+#destinos .carousel-item-d img {
+  cursor: url("../img/Pointer5.png"), auto;
 }
 
 .carousel-item-d .parallax {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
+
 /* 
 #destinos .carousel-item-d::before {
   width: 100%;
@@ -856,7 +862,7 @@ footer .derechos p {
 
 #destinos .carousel-item-d h2 {
   position: absolute;
-  z-index: 99;
+  z-index: 999;
   top: 35%;
   left: 0;
   right: 0;
@@ -864,15 +870,36 @@ footer .derechos p {
   color: #fff;
   font-size: 130px;
   font-weight: 300;
+  width: fit-content;
+  margin: 0 auto;
+  cursor: url("../img/Pointer5.png"), auto;
 }
+
+#destinos .carousel-item-d h2::after {
+  width: 0;
+  height: 3px;
+  background: #fff;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  transition: .4s;
+}
+
+#destinos .carousel-item-d h2:hover::after {
+  width: 100%;
+}
+
 #destinos.interna-destinos .carousel-item-d h2 {
   font-size: 80px;
-  top: 38%;
+  top: 34%;
 }
 
 #destinos .carousel-item-d img {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .carousel-content-destinos.animate {
@@ -884,9 +911,9 @@ footer .derechos p {
 }
 
 
-#destinos .carousel-controls {
+#destinos .owl-nav {
   position: absolute;
-  bottom: 56%;
+  bottom: 44%;
   width: 60%;
   left: 0;
   right: 0;
@@ -894,11 +921,36 @@ footer .derechos p {
   display: flex;
   justify-content: space-between;
   z-index: 99;
+  height: 48px;
 }
 
-#destinos.interna-destinos .carousel-controls {
+#destinos .owl-nav .owl-prev {
+  color: transparent;
+  width: 53px;
+  height: 48px;
+  border: transparent;
+  background: url("../img/Left-arrow.png");
+  position: absolute;
+  top: -200%;
+  left: 0;
+  cursor: url("../img/Pointer5.png"), auto;
+}
+
+#destinos .owl-nav .owl-next {
+  color: transparent;
+  width: 53px;
+  height: 48px;
+  border: transparent;
+  background: url("../img/Right-arrow.png");
+  position: absolute;
+  top: -200%;
+  cursor: url("../img/Pointer5.png"), auto;
+  right: 0;
+}
+
+#destinos.interna-destinos .owl-nav {
   width: 48%;
-  bottom: 55%;
+  bottom: 48%;
 }
 
 #destinos .prev-button,
@@ -914,27 +966,20 @@ footer .derechos p {
 
 }
 
-.carousel-item-d.active {
+.owl-item.active .carousel-item-d {
   perspective: 1000px;
   transform: translateZ(-150px);
 }
 
-#menu-oculto.active {
-  right: 0%;
-  display: block;
-  animation-name: desvanecer;
-  animation-duration: .4s;
-  animation-timing-function: ease-out;
-}
+.owl-item.active .carousel-item-d h2 {}
 
-
-.carousel-item-d.active h2 {
+.owl-item.active .carousel-item-d h2 {
   animation-name: desvanecer2;
   animation-duration: 2s;
   animation-timing-function: ease-out;
 }
 
-.carousel-item-d.active img {
+.owl-item.active .carousel-item-d img {
   animation-name: zoomOut;
   animation-duration: 2s;
   animation-timing-function: ease-out;
@@ -966,16 +1011,26 @@ footer .derechos p {
 
 @keyframes zoomOut {
   0% {
-    
-    transform: scale(1.7);
+
+    transform: scale(2);
   }
 
 
   100% {
-    
+
     transform: scale(1);
   }
 }
+
+
+#menu-oculto.active {
+  right: 0%;
+  display: block;
+  animation-name: desvanecer;
+  animation-duration: .4s;
+  animation-timing-function: ease-out;
+}
+
 
 /* RESPONSIVE */
 
